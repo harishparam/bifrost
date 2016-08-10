@@ -1,0 +1,30 @@
+<html>
+<head>
+<script   src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
+</head>
+<body>
+<h1>Blasting Pixels</h1>
+<iframe id='theframe' src="http://www.w3schools.com"></iframe>
+<button id='go'>Run</button>
+<h3 id='note'>Testing</h3>
+<script type='text/javascript'>
+$(document).ready(function(){
+  $.getJSON('/links')
+	  .done(function(data){
+	  	console.log(data)
+	  	$('[deeplink]').each(function(){
+        	$(this).attr('href', data[window.location.pathname.split('/')[1]][$(this).attr('deeplink')]);
+	  	});
+	  })
+	  .fail(function( jqxhr, textStatus, error ) {
+		var err = textStatus + ", " + error;
+		console.log( "Request Failed: " + err );
+	  });
+});
+
+$.('#go').click(function(){
+
+})
+</script>
+</body>
+</html>
