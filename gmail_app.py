@@ -1,5 +1,5 @@
 import json
-import flask
+from flask import Flask 
 import httplib2
 import base64
 import email
@@ -12,7 +12,7 @@ from oauth2client import tools
 from flask.json import jsonify
 
 
-app = flask.Flask(__name__)
+app = Flask(__name__)
 
 
 @app.route('/')
@@ -171,5 +171,5 @@ def openmail():
 if __name__ == '__main__':
     import uuid
     app.secret_key = str(uuid.uuid4())
-    app.debug = False
-    app.run(host='0.0.0.0')
+    # app.debug = False
+    app.run(debug=True)
